@@ -1,42 +1,3 @@
-# import tensorflow as tf
-# sess = tf.compat.v1.Session()
-# with sess.as_default():
-#     # tensor = tf.random.uniform([3,4])
-#     # tensor = tf.constant([[1,2,3,4],[1,2,3,4],[1,2,3,4]], dtype=float)
-#     tensor = tf.random.uniform([3,2])
-#     b = tf.random.uniform([3,2])
-#     dist_array = 2 - 2 * tf.matmul(tensor, b, transpose_b=True)
-#     print_op1 = tf.print("dist_array:", dist_array)
-#     pos_dist = tf.diag_part(dist_array)
-#     triplet_dist_g2s = pos_dist - dist_array
-#     print_op2 = tf.print("triplet_dist_g2s:",triplet_dist_g2s)
-#     triplet_dist_s2g = tf.expand_dims(pos_dist, 1) - dist_array
-#     print_op3 = tf.print("triplet_dist_s2g:",triplet_dist_s2g)
-#     with tf.control_dependencies([print_op1, print_op2, print_op3]):
-#         out = tf.add(triplet_dist_s2g, triplet_dist_g2s)
-# sess.run(out)
-
-# import tensorflow as tf
-
-# v1 = tf.constant([1,2,8], dtype=float)
-# # v1 = tf.expand_dims(v1, 1)
-# v2 = tf.constant([[1,2,3],[1,2,3],[1,2,3]], dtype=float)
-# diff = v1 - v2 
-# loss_s2g = tf.reduce_sum(tf.log(1 + tf.exp(diff * 10.0)))
-
-# with tf.Session() as sess:
-#     sess.run(tf.global_variables_initializer())
-#     print(diff.eval()) # <-- `diff` contains only 'ones' because of broadcasting
-#     print(loss_s2g.eval())
-
-# # [[[[1. 1. 1.]
-# #    [1. 1. 1.]]
-# # 
-# #   [[1. 1. 1.]
-# #    [1. 1. 1.]]]]
-
-# print(diff.get_shape().as_list()) # [1, 2, 2, 3] <-- same shape as `v1`
-
 import torch 
 import numpy as np
 
@@ -96,16 +57,3 @@ if __name__ == "__main__":
     v2 = v2 / torch.linalg.norm(v2,dim=1,keepdim=True)
     print(soft_margin_triplet_loss(v1, v2, 10.0))
     print(softMarginTripletLoss(v1, v2, 10.0))
-
-
-
-
-# import torch
-# v1 = torch.tensor([1,2,8])
-# v1 = v1.unsqueeze(0).permute(1,0)
-# print(v1.shape)
-# v2 = torch.tensor([[1,2,3],[1,2,3],[1,2,3]])
-# diff = v1 - v2 
-# print(diff)
-# loss_g2s = torch.sum(torch.log(1 + torch.exp(diff * 10.0)))
-# print(loss_g2s)
