@@ -21,4 +21,4 @@ python test.py --model_folder SAVE_NAME
 
 ### Dataset
 ---
-Will be released soon
+Please fill out [this](https://forms.gle/fSBJwmt1YgUqUVVh6) form to obtain access to the collected dataset. To be noticed, we will only share the data if it will be used for RESEARCH PURPOSE only. After downloading the dataset, please unzip and put all three folders (json, satellite, and street) under dataset folder.
